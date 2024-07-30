@@ -1,0 +1,8 @@
+/dist
+/ignore
+/node_modules
+/note
+/storage
+
+.env
+.DS_Store

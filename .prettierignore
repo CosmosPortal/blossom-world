@@ -1,0 +1,11 @@
+/dist
+/ignore
+/node_modules
+/note
+/Storage
+
+.env
+.DS_Store
+.gitignore
+
+LICENSE
