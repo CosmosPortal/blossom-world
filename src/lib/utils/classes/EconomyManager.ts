@@ -37,9 +37,9 @@ export class EconomyManager {
 
 		if (CurrentXp + earned >= RequiredXp) levelUp = levelUp + 1;
 
-		await UpdateEntity(Account, { Snowflake: interaction.user.id }, { CurrentXp: levelUp === Level ? CurrentXp + earned : CurrentXp + earned - RequiredXp, Level: levelUp, RequiredXp: RequiredXp + 100, TotalXp: total });
+		await UpdateEntity(Account, { Snowflake: interaction.user.id }, { CurrentXp: levelUp === Level ? CurrentXp + earned : CurrentXp + earned - RequiredXp, Level: levelUp, RequiredXp: levelUp === Level ? RequiredXp : RequiredXp + 100, TotalXp: total });
 
-		return { clanBonus, earned, level: levelUp, leveledUp: !(levelUp === Level), total, xp };
+		return { clanBonus, earned, level: levelUp, leveledUp: levelUp !== Level, total, xp };
 	}
 
 	/**
@@ -55,9 +55,9 @@ export class EconomyManager {
 
 		if (CurrentXp + xp >= RequiredXp) levelUp = levelUp + 1;
 
-		await UpdateEntity(Clans, { Clan: clan }, { CurrentXp: levelUp === Level ? CurrentXp + xp : CurrentXp + xp - RequiredXp, Level: levelUp, RequiredXp: RequiredXp + 100, TotalXp: total });
+		await UpdateEntity(Clans, { Clan: clan }, { CurrentXp: levelUp === Level ? CurrentXp + xp : CurrentXp + xp - RequiredXp, Level: levelUp, RequiredXp: levelUp === Level ? RequiredXp : RequiredXp + 100, TotalXp: total });
 
-		return { level: levelUp, leveledUp: !(levelUp === Level), total, xp };
+		return { level: levelUp, leveledUp: levelUp !== Level, total, xp };
 	}
 
 	/**
