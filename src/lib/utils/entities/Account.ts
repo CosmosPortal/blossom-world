@@ -39,7 +39,7 @@ export class Account {
 	@Column({ default: 0, type: "integer" })
 	TotalXp!: number;
 
-	@Column({ default: 100, type: "integer" })
+	@Column({ default: 0, type: "integer" })
 	Wallet!: number;
 
 	@CreateDateColumn()
