@@ -1,4 +1,4 @@
-import { AccountSecurity, Developer, Roles } from "#lib/utils";
+import { Account, AccountSecurity, Clans, CooldownManager, Developer, Roles } from "#lib/utils";
 import { DataSource } from "typeorm";
 
 /**
@@ -7,7 +7,7 @@ import { DataSource } from "typeorm";
 export const Database = new DataSource({
 	type: "sqlite",
 	database: "./storage/database.sqlite",
-	entities: [AccountSecurity, Developer, Roles],
+	entities: [Account, AccountSecurity, Clans, CooldownManager, Developer, Roles],
 	logging: false,
 	synchronize: true
 });
