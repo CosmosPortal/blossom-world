@@ -17,7 +17,7 @@ execute(slash, async (interaction) => {
 	if (!(await Sentry.IsAuthorized(interaction.user.id))) return void (await CreateResponse.InteractionError(interaction, `You are unauthorized to use ${interaction.client.user.username}.`));
 
 	const account = await FindOneEntity(Account, { Snowflake: interaction.user.id });
-	if (!account) return void (await CreateResponse.InteractionError(interaction, `It seems like you don't have an account! Use </register:${ApplicationCommandInfo(interaction.client, "register", "id")}> to register an account!`));
+	if (!account) return void (await CreateResponse.InteractionError(interaction, `It seems like you don't have an account! Use </register:${await ApplicationCommandInfo(interaction.client, "register", "id")}> to register an account!`));
 
 	const cooldown = await Cooldown.CheckCooldown(`work_${interaction.user.id}`);
 

@@ -17,7 +17,7 @@ execute(slash, async (interaction) => {
 	await interaction.deferReply({ ephemeral: true });
 
 	const account = await FindOneEntity(Account, { Snowflake: interaction.user.id });
-	if (account) return void (await CreateResponse.InteractionError(interaction, `It seems like you already have an account! Use </profile:${ApplicationCommandInfo(interaction.client, "profile", "id")}> to view your account!`));
+	if (account) return void (await CreateResponse.InteractionError(interaction, `It seems like you already have an account! Use </profile:${await ApplicationCommandInfo(interaction.client, "profile", "id")}> to view your account!`));
 
 	const { CreationTimestamp } = await CreateEntity(Account, { Snowflake: interaction.user.id });
 
