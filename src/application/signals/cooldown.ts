@@ -5,7 +5,7 @@ import { execute, Signal, Signals } from "sunar";
 const signal = new Signal(Signals.Cooldown);
 
 execute(signal, async (interaction, { remaining }) => {
-	return void (await CreateResponse.InteractionError(interaction, `Please wait **${new DurationFormatter().format(remaining, 4, { right: ", " })}** for your cooldown to end.`));
+	return void (await CreateResponse.InteractionError(interaction, `You are going to fast! Please wait **${new DurationFormatter().format(remaining, 4, { right: ", " })}** before executing this command again.`));
 });
 
 export { signal };
