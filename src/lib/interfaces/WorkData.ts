@@ -3,23 +3,31 @@
  */
 export interface WorkData {
 	/**
-	 * The amount of cash being earned
+	 * The current amount of tokens inside the bag
 	 */
-	cash: number;
+	bag: number;
 	/**
-	 * The bonus given to a user for being in a clan, returns `0` if user is not in a clan
+	 * The bonus given to the user for being in a clan, returns `0` if the user is not in a clan
 	 */
 	clanBonus: number;
 	/**
-	 * The amount of cash the user earned, this adds `cash` and `clanBonus`, afterwards multiples `overtime`
+	 * The amount of tokens the user earned, this adds `tokens` and `clanBonus`, afterwards multiples `overtime`
 	 */
 	earned: number;
 	/**
-	 * The paycheck total after being updated
+	 * The current net worth of the user
 	 */
-	paycheck: number;
+	netWorth: number;
 	/**
 	 * The multiplier earned due to overtime shift
 	 */
 	overtime: number;
+	/**
+	 * The amount of tokens being earned
+	 */
+	tokens: number;
+	/**
+	 * The total amount of tokens the user earned since they registered an account
+	 */
+	totalNetWorth: number;
 }

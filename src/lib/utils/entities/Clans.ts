@@ -7,7 +7,7 @@ export class Clans {
 	Clan!: Clan;
 
 	@Column({ default: 0, type: "integer" })
-	BankAccount!: number;
+	Chest!: number;
 
 	@Column({ default: 0, type: "integer" })
 	CurrentXp!: number;

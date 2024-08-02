@@ -9,8 +9,8 @@ export class Account {
 	@Column({ default: "", type: "simple-array" })
 	Badges!: string[];
 
-	@Column({ default: 0, type: "integer" })
-	BankAccount!: number;
+	@Column({ default: 100000, type: "integer" })
+	ChestStorage!: number;
 
 	@Column({ default: Clan.None, enum: Clan, type: "simple-enum" })
 	Clan!: Clan;
@@ -27,20 +27,20 @@ export class Account {
 	@Column({ default: 0, type: "integer" })
 	NetWorth!: number;
 
-	@Column({ default: 0, type: "integer" })
-	Paycheck!: number;
-
 	@Column({ default: 500, type: "integer" })
 	RequiredXp!: number;
+
+	@Column({ default: 0, type: "integer" })
+	TokenBag!: number;
+
+	@Column({ default: 0, type: "integer" })
+	TokenChest!: number;
 
 	@Column({ default: 0, type: "integer" })
 	TotalNetWorth!: number;
 
 	@Column({ default: 0, type: "integer" })
 	TotalXp!: number;
-
-	@Column({ default: 0, type: "integer" })
-	Wallet!: number;
 
 	@CreateDateColumn()
 	CreationTimestamp!: Date;
