@@ -6,7 +6,7 @@ import { config, CooldownScope, execute, Slash } from "sunar";
 
 const slash = new Slash({
 	name: "work",
-	description: "Work a shift at your job for a paycheck"
+	description: "Work a shift at your job"
 });
 
 config(slash, { cooldown: { time: 3000, scope: CooldownScope.User } });
@@ -28,9 +28,9 @@ execute(slash, async (interaction) => {
 	const xp = await EconomyManager.ManageAccountXp(interaction, account);
 	if (account.Clan !== Clan.None) await EconomyManager.ManageClanXp(account.Clan);
 
-	await interaction.reply({ embeds: [Utility.CreateSimpleEmbed(`You worked long hours ${work.overtime === 1 ? "with overtime " : ""}and earned **$${work.earned}** for your paycheck! Come back in 1 hour to work another shift!`)], ephemeral: false });
+	await interaction.reply({ embeds: [Utility.CreateSimpleEmbed(`You worked long hours ${work.overtime !== 1 ? "with overtime " : ""}and earned ${EnvData("EMOJI_TOKEN")}** ${work.earned}**! Come back in 1 hour to work another shift!`)], ephemeral: false });
 	await Utility.Wait(300);
-	if (xp.leveledUp) return await interaction.followUp({ embeds: [Utility.CreateSimpleEmbed(`Hey **@${interaction.user.tag}**! You just advanced to level **${xp.level}**!`)], ephemeral: true });
+	if (xp.leveledUp) return void (await interaction.followUp({ embeds: [Utility.CreateSimpleEmbed(`Hey **@${interaction.user.tag}**! You just advanced to level **${xp.level}**!`)], ephemeral: true }));
 });
 
 export { slash };
