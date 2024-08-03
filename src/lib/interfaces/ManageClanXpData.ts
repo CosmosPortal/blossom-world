@@ -11,10 +11,6 @@ export interface ManageClanXpData {
 	 */
 	leveledUp: boolean;
 	/**
-	 * The total amount of xp the clan has earned since created
-	 */
-	total: number;
-	/**
 	 * The amount of xp being earned
 	 */
 	xp: number;

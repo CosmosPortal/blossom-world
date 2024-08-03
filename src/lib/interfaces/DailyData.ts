@@ -34,8 +34,4 @@ export interface DailyData {
 	 * The amount of tokens being earned
 	 */
 	tokens: number;
-	/**
-	 * The total amount of tokens the user earned since they registered an account
-	 */
-	totalNetWorth: number;
 }

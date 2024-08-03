@@ -19,10 +19,6 @@ export interface ManageAccountXpData {
 	 */
 	leveledUp: boolean;
 	/**
-	 * The total amount of xp the user has earned since they registered an account
-	 */
-	total: number;
-	/**
 	 * The amount of xp being earned
 	 */
 	xp: number;

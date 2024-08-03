@@ -21,12 +21,6 @@ export class Clans {
 	@Column({ default: 2500, type: "integer" })
 	RequiredXp!: number;
 
-	@Column({ default: 0, type: "integer" })
-	TotalNetWorth!: number;
-
-	@Column({ default: 0, type: "integer" })
-	TotalXp!: number;
-
 	@CreateDateColumn()
 	CreationTimestamp!: Date;
 

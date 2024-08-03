@@ -9,9 +9,6 @@ export class Account {
 	@Column({ default: "", type: "simple-array" })
 	Badges!: string[];
 
-	@Column({ default: 100000, type: "integer" })
-	ChestStorage!: number;
-
 	@Column({ default: Clan.None, enum: Clan, type: "simple-enum" })
 	Clan!: Clan;
 
@@ -36,11 +33,8 @@ export class Account {
 	@Column({ default: 0, type: "integer" })
 	TokenChest!: number;
 
-	@Column({ default: 0, type: "integer" })
-	TotalNetWorth!: number;
-
-	@Column({ default: 0, type: "integer" })
-	TotalXp!: number;
+	@Column({ default: 100000, type: "integer" })
+	TokenChestStorage!: number;
 
 	@CreateDateColumn()
 	CreationTimestamp!: Date;
