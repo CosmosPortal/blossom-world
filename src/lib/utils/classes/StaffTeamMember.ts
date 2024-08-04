@@ -1,5 +1,5 @@
-import { FindOrCreateEntity, Roles } from "#lib/utils";
 import { MemberHasPermissions } from "@cosmosportal/utilities";
+import { FindOrCreateEntity, Roles } from "@lib/utils";
 import type { Guild, GuildMember } from "discord.js";
 
 /**

@@ -1,6 +1,6 @@
-import { Clan } from "#lib/enums";
-import { Account, Cooldown, CreateResponse, EconomyManager, FindOneEntity, Sentry, Utility } from "#lib/utils";
 import { ApplicationCommandInfo } from "@cosmosportal/utilities";
+import { JoinableClan } from "@lib/enums";
+import { Account, Cooldown, CreateResponse, EconomyManager, EnvData, FindOneEntity, Sentry, Utility } from "@lib/utils";
 import { DurationFormatter, Time } from "@sapphire/duration";
 import { config, CooldownScope, execute, Slash } from "sunar";
 
@@ -26,7 +26,7 @@ execute(slash, async (interaction) => {
 
 	const work = await EconomyManager.Work(interaction, account);
 	const xp = await EconomyManager.ManageAccountXp(interaction, account);
-	if (account.Clan !== Clan.None) await EconomyManager.ManageClanXp(account.Clan);
+	if (account.Clan !== JoinableClan.None) await EconomyManager.ManageClanXp(account.Clan);
 
 	await interaction.reply({ embeds: [Utility.CreateSimpleEmbed(`You worked long hours ${work.overtime !== 1 ? "with overtime " : ""}and earned ${EnvData("EMOJI_TOKEN")}** ${work.earned}**! Come back in 1 hour to work another shift!`)], ephemeral: false });
 	await Utility.Wait(300);

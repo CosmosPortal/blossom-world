@@ -1,4 +1,4 @@
-import type { ProgressBarData, ProgressBarStructure } from "#lib/interfaces";
+import type { ProgressBarData, ProgressBarStructure } from "@lib/interfaces";
 
 /**
  * Creates a bar and returns a percentage

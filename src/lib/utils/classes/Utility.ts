@@ -1,4 +1,4 @@
-import { Color } from "#lib/enums";
+import { Color } from "@lib/enums";
 import { setTimeout } from "timers/promises";
 import type { APIEmbed } from "discord.js";
 

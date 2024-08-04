@@ -1,4 +1,4 @@
-import { Account, AccountSecurity, Clans, CooldownManager, Developer, Roles } from "#lib/utils";
+import { Account, AccountSecurity, Clans, CooldownManager, Developer, Roles } from "@lib/utils";
 import { DataSource } from "typeorm";
 
 /**

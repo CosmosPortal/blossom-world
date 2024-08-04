@@ -1,7 +1,7 @@
-import { CreateResponse, Sentry, Utility } from "#lib/utils";
-import { EmbedBuilder } from "discord.js";
+import { CreateResponse, Sentry, Utility } from "@lib/utils";
 import { config, CooldownScope, execute, Slash } from "sunar";
 import { dependencies, devDependencies, version } from "../../../../package.json";
+import type { APIEmbed } from "discord.js";
 
 const slash = new Slash({
 	name: "about",
@@ -17,10 +17,11 @@ execute(slash, async (interaction) => {
 
 	const memberCount = interaction.client.guilds.cache.reduce((user, guild) => user + guild.memberCount, 0);
 
-	const embed = new EmbedBuilder()
-		.setThumbnail(interaction.client.user.avatarURL({ forceStatic: false, size: 4096 }))
-		.setDescription(`Cosmos Portal presents to you ${interaction.client.user.username}, an economy Discord application for Starlight Café.\n### ${interaction.client.user.username} Information\n- **Member Count** • ${memberCount.toLocaleString()}\n- **Ping** • ${interaction.client.ws.ping}ms\n- **Uptime** • Online since <t:${Math.trunc(Math.floor((Date.now() - interaction.client.uptime) / 1000))}:D>\n### Version\n- **${interaction.client.user.username}** • v${version}\n- **@CosmosPortal/Utilities** • v${dependencies["@cosmosportal/utilities"].replace(/^\^/g, "")}\n- **Discord.JS** • v${dependencies["discord.js"].replace(/^\^/g, "")}\n- **TypeScript** • v${devDependencies["typescript"].replace(/^\^/g, "")}`)
-		.setColor(Utility.DefaultColor());
+	const embed: APIEmbed = {
+		color: Utility.DefaultColor(),
+		description: `Cosmos Portal presents to you ${interaction.client.user.username}, an economy Discord application for Starlight Café.\n### ${interaction.client.user.username} Information\n- **Member Count** • ${memberCount.toLocaleString()}\n- **Ping** • ${interaction.client.ws.ping}ms\n- **Uptime** • Online since <t:${Math.trunc(Math.floor((Date.now() - interaction.client.uptime) / 1000))}:D>\n### Version\n- **${interaction.client.user.username}** • v${version}\n- **@CosmosPortal/Utilities** • v${dependencies["@cosmosportal/utilities"].replace(/^\^/g, "")}\n- **Discord.JS** • v${dependencies["discord.js"].replace(/^\^/g, "")}\n- **TypeScript** • v${devDependencies["typescript"].replace(/^\^/g, "")}`,
+		thumbnail: { url: interaction.client.user.displayAvatarURL({ forceStatic: false, size: 4096 }) }
+	};
 
 	return void (await interaction.reply({ embeds: [embed], ephemeral: true }));
 });

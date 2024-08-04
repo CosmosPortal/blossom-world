@@ -1,4 +1,4 @@
-import { Utility } from "#lib/utils";
+import { Utility } from "@lib/utils";
 import type { ContextMenuCommandInteraction, InteractionResponse, Message, RepliableInteraction } from "discord.js";
 
 /**

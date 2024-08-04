@@ -23,11 +23,12 @@
 		"rootDir": "src",
 		"baseUrl": "./src",
 		"paths": {
-			"#lib/enums": ["lib/enums/index.js"],
-			"#lib/interfaces": ["lib/interfaces/index.js"],
-			"#lib/types": ["lib/types/index.js"],
-			"#lib/utils": ["lib/utils/index.js"],
-			"#lib/*": ["lib/*"]
+			"@lib/constants": ["lib/constants/index.js"],
+			"@lib/enums": ["lib/enums/index.js"],
+			"@lib/interfaces": ["lib/interfaces/index.js"],
+			"@lib/types": ["lib/types/index.js"],
+			"@lib/utils": ["lib/utils/index.js"],
+			"@lib/*": ["lib/*"]
 		},
 		"lib": ["ESNext"]
 	},

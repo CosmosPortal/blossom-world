@@ -1,7 +1,7 @@
 /**
- * Clans a user can join
+ * All joinable clans
  */
-export enum Clan {
+export enum JoinableClan {
 	/**
 	 * The clan of Ameno
 	 */

@@ -1,4 +1,4 @@
-import { Clan } from "#lib/enums";
+import { JoinableClan } from "@lib/enums";
 import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
 @Entity({ name: "Account" })
@@ -9,8 +9,8 @@ export class Account {
 	@Column({ default: "", type: "simple-array" })
 	Badges!: string[];
 
-	@Column({ default: Clan.None, enum: Clan, type: "simple-enum" })
-	Clan!: Clan;
+	@Column({ default: JoinableClan.None, enum: JoinableClan, type: "simple-enum" })
+	Clan!: JoinableClan;
 
 	@Column({ default: 0, type: "integer" })
 	CurrentXp!: number;
@@ -20,9 +20,6 @@ export class Account {
 
 	@Column({ default: 0, type: "integer" })
 	Level!: number;
-
-	@Column({ default: 0, type: "integer" })
-	NetWorth!: number;
 
 	@Column({ default: 500, type: "integer" })
 	RequiredXp!: number;
@@ -35,6 +32,9 @@ export class Account {
 
 	@Column({ default: 100000, type: "integer" })
 	TokenChestStorage!: number;
+
+	@Column({ default: 0, type: "integer" })
+	TokenNetWorth!: number;
 
 	@CreateDateColumn()
 	CreationTimestamp!: Date;

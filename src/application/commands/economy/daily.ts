@@ -1,6 +1,6 @@
-import { Clan } from "#lib/enums";
-import { Account, Cooldown, CreateResponse, EconomyManager, FindOneEntity, Sentry, Utility } from "#lib/utils";
 import { ApplicationCommandInfo } from "@cosmosportal/utilities";
+import { JoinableClan } from "@lib/enums";
+import { Account, Cooldown, CreateResponse, EconomyManager, EnvData, FindOneEntity, Sentry, Utility } from "@lib/utils";
 import { DurationFormatter, Time } from "@sapphire/duration";
 import { config, CooldownScope, execute, Slash } from "sunar";
 
@@ -26,7 +26,7 @@ execute(slash, async (interaction) => {
 
 	const daily = await EconomyManager.Daily(interaction, account);
 	const xp = await EconomyManager.ManageAccountXp(interaction, account);
-	if (account.Clan !== Clan.None) await EconomyManager.ManageClanXp(account.Clan);
+	if (account.Clan !== JoinableClan.None) await EconomyManager.ManageClanXp(account.Clan);
 
 	await interaction.reply({ embeds: [Utility.CreateSimpleEmbed(`You have claimed your daily reward of ${EnvData("EMOJI_TOKEN")} **${daily.earned}**! ${daily.resetStreak ? "Your streak was reset back to **0**!" : `Your streak is now at **${daily.dailyStreak}**!`} Come back in 1 day to claim again!`)], ephemeral: false });
 	await Utility.Wait(300);

@@ -1,7 +1,7 @@
-import { AuthorizationLevel } from "#lib/enums";
-import { AccountSecurity, Developer, FindOrCreateEntity } from "#lib/utils";
+import { AuthorizationLevel } from "@lib/enums";
+import { AccountSecurity, Developer, FindOrCreateEntity } from "@lib/utils";
+import type { Snowflake } from "@lib/types";
 import type { Client } from "discord.js";
-import type { Snowflake } from "#lib/types";
 
 /**
  * A security class for the client

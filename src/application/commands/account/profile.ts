@@ -1,5 +1,5 @@
-import { Clan as ClanEnum } from "#lib/enums";
-import { Account, CreateResponse, EnvData, FindOneEntity, Leaderboard, ProgressBar, Sentry, Utility } from "#lib/utils";
+import { JoinableClan } from "@lib/enums";
+import { Account, CreateResponse, EnvData, FindOneEntity, Leaderboard, ProgressBar, Sentry, Utility } from "@lib/utils";
 import { ApplicationCommandOptionType, type APIEmbed } from "discord.js";
 import { config, CooldownScope, execute, Slash } from "sunar";
 
@@ -32,15 +32,15 @@ execute(slash, async (interaction) => {
 
 	if (!account) return void (await CreateResponse.InteractionError(interaction, `It seems like **@${user.tag}** doesn't have an account registered!`));
 
-	const { Clan, CurrentXp, Level, NetWorth, RequiredXp, TokenBag, TokenChest, TokenChestStorage } = account;
+	const { Clan, CurrentXp, Level, RequiredXp, TokenBag, TokenChest, TokenChestStorage, TokenNetWorth } = account;
 	const rank = await Leaderboard.AccountLevelRank(account);
 	const progressBarData = ProgressBar({ currentXp: CurrentXp, requiredXp: RequiredXp });
 
 	const embed: APIEmbed = {
-		author: { name: `@${user.tag}${Clan !== ClanEnum.None ? `┃Clan of ${Clan}` : ""}` },
+		author: { name: `@${user.tag}${Clan !== JoinableClan.None ? `┃Clan of ${Clan}` : ""}` },
 		color: Utility.DefaultColor(),
 		fields: [
-			{ name: `Tokens┃${EnvData("EMOJI_TOKEN")} \`${NetWorth.toLocaleString()}\``, value: `Bag • ${EnvData("EMOJI_TOKEN")} \`${TokenBag.toLocaleString()}\`\nChest • ${EnvData("EMOJI_TOKEN")} \`${TokenChest.toLocaleString()}\`\nChest Storage • \`${TokenChest.toLocaleString()}/${TokenChestStorage.toLocaleString()}\``, inline: true },
+			{ name: `Tokens┃${EnvData("EMOJI_TOKEN")} \`${TokenNetWorth.toLocaleString()}\``, value: `Bag • ${EnvData("EMOJI_TOKEN")} \`${TokenBag.toLocaleString()}\`\nChest • ${EnvData("EMOJI_TOKEN")} \`${TokenChest.toLocaleString()}\`\nChest Storage • \`${TokenChest.toLocaleString()}/${TokenChestStorage.toLocaleString()}\``, inline: true },
 			{ name: "_ _", value: "_ _", inline: true },
 			{ name: "Level", value: `Rank • \`#${Number.isNaN(rank) ? "?" : rank.toLocaleString()}\`\nLevel • \`${Level.toLocaleString()}\`\nExperience • \`${CurrentXp.toLocaleString()}/${RequiredXp.toLocaleString()}\`\n\`${progressBarData.bar}\` ${progressBarData.percentage}%`, inline: true }
 		]

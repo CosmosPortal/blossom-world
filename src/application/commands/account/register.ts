@@ -1,5 +1,5 @@
-import { Account, CreateEntity, CreateResponse, FindOneEntity, Sentry, Utility } from "#lib/utils";
 import { ApplicationCommandInfo } from "@cosmosportal/utilities";
+import { Account, CreateEntity, CreateResponse, FindOneEntity, Sentry, Utility } from "@lib/utils";
 import { config, CooldownScope, execute, Slash } from "sunar";
 
 const slash = new Slash({

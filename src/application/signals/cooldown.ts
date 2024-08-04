@@ -1,4 +1,4 @@
-import { CreateResponse } from "#lib/utils";
+import { CreateResponse } from "@lib/utils";
 import { DurationFormatter } from "@sapphire/duration";
 import { execute, Signal, Signals } from "sunar";
 

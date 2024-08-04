@@ -1,1 +1,1 @@
-export * from "#lib/types/Snowflake";
+export * from "@lib/types/Snowflake";

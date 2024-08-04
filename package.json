@@ -8,11 +8,12 @@
 	"type": "module",
 	"main": "dist/index.js",
 	"imports": {
-		"#lib/enums": "./dist/lib/enums/index.js",
-		"#lib/interfaces": "./dist/lib/interfaces/index.js",
-		"#lib/types": "./dist/lib/types/index.js",
-		"#lib/utils": "./dist/lib/utils/index.js",
-		"#lib/*": "./dist/lib/*.js"
+		"@lib/constants": "./dist/lib/constants/index.js",
+		"@lib/enums": "./dist/lib/enums/index.js",
+		"@lib/interfaces": "./dist/lib/interfaces/index.js",
+		"@lib/types": "./dist/lib/types/index.js",
+		"@lib/utils": "./dist/lib/utils/index.js",
+		"@lib/*": "./dist/lib/*.js"
 	},
 	"scripts": {
 		"build": "tsup",

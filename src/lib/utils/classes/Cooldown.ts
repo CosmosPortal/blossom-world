@@ -1,5 +1,5 @@
-import { CooldownManager, CreateEntity, DeleteEntity, FindOneEntity } from "#lib/utils";
-import type { Snowflake } from "#lib/types";
+import { CooldownManager, CreateEntity, DeleteEntity, FindOneEntity } from "@lib/utils";
+import type { Snowflake } from "@lib/types";
 
 /**
  * Manage cooldowns for a key

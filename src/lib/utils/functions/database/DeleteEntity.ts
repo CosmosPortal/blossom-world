@@ -1,4 +1,4 @@
-import { Connect, Database } from "#lib/utils";
+import { Connect, Database } from "@lib/utils";
 import type { FindOneOptions, ObjectType } from "typeorm";
 
 /**
