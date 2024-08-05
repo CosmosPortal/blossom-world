@@ -28,7 +28,7 @@ execute(slash, async (interaction) => {
 	const xp = await CurrencyManager.ManageAccountXp(interaction, account);
 	if (account.Clan !== JoinableClan.None) await CurrencyManager.ManageClanXp(account.Clan);
 
-	await interaction.reply({ embeds: [Utility.CreateSimpleEmbed(`You have claimed your daily reward of ${EnvData("EMOJI_TOKEN")} **${daily.earned}**! ${daily.resetStreak ? "Your streak was reset back to **0**!" : `Your streak is now at **${daily.dailyStreak}**!`} Come back in 1 day to claim again!`)], ephemeral: false });
+	await interaction.reply({ embeds: [Utility.CreateSimpleEmbed(`You have claimed your daily reward of ${EnvData("EMOJI_TOKEN")} **${daily.earned.toLocaleString()}**! ${daily.resetStreak ? "Your streak was reset back to **0**!" : `Your streak is now at **${daily.dailyStreak}**!`} Come back in 1 day to claim again!`)], ephemeral: false });
 	await Utility.Wait(300);
 	if (xp.leveledUp) return void (await interaction.followUp({ embeds: [Utility.CreateSimpleEmbed(`Hey **@${interaction.user.tag}**! You just advanced to level **${xp.level}**!`)], ephemeral: true }));
 });

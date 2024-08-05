@@ -42,7 +42,7 @@ execute(slash, async (interaction) => {
 		fields: [
 			{ name: `Tokens┃${EnvData("EMOJI_TOKEN")} \`${TokenNetWorth.toLocaleString()}\``, value: `Bag • ${EnvData("EMOJI_TOKEN")} \`${TokenBag.toLocaleString()}\`\nChest • ${EnvData("EMOJI_TOKEN")} \`${TokenChest.toLocaleString()}\`\nChest Storage • \`${TokenChest.toLocaleString()}/${TokenChestStorage.toLocaleString()}\``, inline: true },
 			{ name: "_ _", value: "_ _", inline: true },
-			{ name: "Level", value: `Rank • \`#${Number.isNaN(rank) ? "?" : rank.toLocaleString()}\`\nLevel • \`${Level.toLocaleString()}\`\nExperience • \`${CurrentXp.toLocaleString()}/${RequiredXp.toLocaleString()}\`\n\`${progressBarData.bar}\` ${progressBarData.percentage}%`, inline: true }
+			{ name: "Level", value: `Rank • \`#${isNaN(rank) ? "?" : rank.toLocaleString()}\`\nLevel • \`${Level.toLocaleString()}\`\nExperience • \`${CurrentXp.toLocaleString()}/${RequiredXp.toLocaleString()}\`\n\`${progressBarData.bar}\` ${progressBarData.percentage}%`, inline: true }
 		]
 	};
 
