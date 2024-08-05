@@ -1,5 +1,5 @@
 /**
- * The data that is returned when EconomyManager#Daily() is executed
+ * The data that is returned when CurrencyManager#Daily() is executed
  */
 export interface DailyData {
 	/**

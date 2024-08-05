@@ -1,13 +1,13 @@
 import { RandomNumber } from "@cosmosportal/utilities";
 import { JoinableClan } from "@lib/enums";
 import { Account, FindOrCreateEntity, Clans, UpdateEntity } from "@lib/utils";
-import type { DailyData, ManageAccountXpData, ManageClanXpData, WorkData } from "@lib/interfaces";
+import type { DailyData, ManageAccountXpData, ManageClanXpData, WeeklyData, WorkData } from "@lib/interfaces";
 import type { ChatInputCommandInteraction } from "discord.js";
 
 /**
- * Manage an economy command, xp, clans, and more
+ * Manage a currency command, xp, clans, and more
  */
-export class EconomyManager {
+export class CurrencyManager {
 	/**
 	 * Runs the daily command
 	 * @param {ChatInputCommandInteraction} interaction - Your interaction class for fetching data
@@ -33,11 +33,11 @@ export class EconomyManager {
 	 * @param {Account} account - The account belonging to the user
 	 * @returns {Promise<ManageAccountXpData>} The data after being executed
 	 */
-	public static async ManageAccountXp(interaction: ChatInputCommandInteraction, account: Account): Promise<ManageAccountXpData> {
+	public static async ManageAccountXp(interaction: ChatInputCommandInteraction, account: Account, multiplier: number = 1): Promise<ManageAccountXpData> {
 		const { Clan, CurrentXp, Level, RequiredXp } = account;
 		const xp = RandomNumber(25, 50);
 		const clanBonus = Clan === JoinableClan.None ? 0 : RandomNumber(25, 50);
-		const earned = xp + clanBonus;
+		const earned = (xp + clanBonus) * multiplier;
 		let levelUp = Level;
 
 		if (CurrentXp + earned >= RequiredXp) levelUp = levelUp + 1;
@@ -62,6 +62,23 @@ export class EconomyManager {
 		await UpdateEntity(Clans, { Clan: clan }, { CurrentXp: levelUp === Level ? CurrentXp + xp : CurrentXp + xp - RequiredXp, Level: levelUp, RequiredXp: levelUp === Level ? RequiredXp : RequiredXp + 100 });
 
 		return { level: levelUp, leveledUp: levelUp !== Level, xp };
+	}
+
+	/**
+	 * Runs the weekly command
+	 * @param {ChatInputCommandInteraction} interaction - Your interaction class for fetching data
+	 * @param {Account} account - The account belonging to the user
+	 * @returns {Promise<DailyData>} The weekly data
+	 */
+	public static async Weekly(interaction: ChatInputCommandInteraction, account: Account): Promise<WeeklyData> {
+		const { Clan, TokenBag, TokenNetWorth } = account;
+		const tokens = 5000;
+		const clanBonus = Clan === JoinableClan.None ? 0 : RandomNumber(500, 750);
+		const earned = tokens + clanBonus;
+
+		await UpdateEntity(Account, { Snowflake: interaction.user.id }, { TokenBag: TokenBag + earned, TokenNetWorth: TokenNetWorth + earned });
+
+		return { bag: TokenBag + earned, clanBonus, earned, netWorth: TokenNetWorth + earned, tokens };
 	}
 
 	/**

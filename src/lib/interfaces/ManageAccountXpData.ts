@@ -1,5 +1,5 @@
 /**
- * The data that is returned when EconomyManager#ManageAccountXp() is executed
+ * The data that is returned when CurrencyManager#ManageAccountXp() is executed
  */
 export interface ManageAccountXpData {
 	/**

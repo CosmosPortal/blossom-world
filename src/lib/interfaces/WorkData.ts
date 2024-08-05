@@ -1,5 +1,5 @@
 /**
- * The data that is returned when EconomyManager#Work() is executed
+ * The data that is returned when CurrencyManager#Work() is executed
  */
 export interface WorkData {
 	/**

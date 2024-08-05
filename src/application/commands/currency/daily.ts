@@ -1,6 +1,6 @@
 import { ApplicationCommandInfo } from "@cosmosportal/utilities";
 import { JoinableClan } from "@lib/enums";
-import { Account, Cooldown, CreateResponse, EconomyManager, EnvData, FindOneEntity, Sentry, Utility } from "@lib/utils";
+import { Account, Cooldown, CreateResponse, CurrencyManager, EnvData, FindOneEntity, Sentry, Utility } from "@lib/utils";
 import { DurationFormatter, Time } from "@sapphire/duration";
 import { config, CooldownScope, execute, Slash } from "sunar";
 
@@ -24,9 +24,9 @@ execute(slash, async (interaction) => {
 	if (cooldown > 0) return void CreateResponse.InteractionError(interaction, `Please wait **${new DurationFormatter().format(cooldown, 4, { right: ", " })}** before you can claim your daily reward again.`);
 	else await Cooldown.SetCooldown(`daily_${interaction.user.id}`, Time.Day, interaction.user.id);
 
-	const daily = await EconomyManager.Daily(interaction, account);
-	const xp = await EconomyManager.ManageAccountXp(interaction, account);
-	if (account.Clan !== JoinableClan.None) await EconomyManager.ManageClanXp(account.Clan);
+	const daily = await CurrencyManager.Daily(interaction, account);
+	const xp = await CurrencyManager.ManageAccountXp(interaction, account);
+	if (account.Clan !== JoinableClan.None) await CurrencyManager.ManageClanXp(account.Clan);
 
 	await interaction.reply({ embeds: [Utility.CreateSimpleEmbed(`You have claimed your daily reward of ${EnvData("EMOJI_TOKEN")} **${daily.earned}**! ${daily.resetStreak ? "Your streak was reset back to **0**!" : `Your streak is now at **${daily.dailyStreak}**!`} Come back in 1 day to claim again!`)], ephemeral: false });
 	await Utility.Wait(300);

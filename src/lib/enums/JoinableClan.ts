@@ -3,9 +3,9 @@
  */
 export enum JoinableClan {
 	/**
-	 * The clan of Ameno
+	 * The clan of Anemo
 	 */
-	Ameno = "Ameno",
+	Anemo = "Anemo",
 	/**
 	 * The clan of Angel
 	 */

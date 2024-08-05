@@ -1,6 +1,6 @@
 import { ApplicationCommandInfo } from "@cosmosportal/utilities";
 import { JoinableClan } from "@lib/enums";
-import { Account, Cooldown, CreateResponse, EconomyManager, EnvData, FindOneEntity, Sentry, Utility } from "@lib/utils";
+import { Account, Cooldown, CreateResponse, CurrencyManager, EnvData, FindOneEntity, Sentry, Utility } from "@lib/utils";
 import { DurationFormatter, Time } from "@sapphire/duration";
 import { config, CooldownScope, execute, Slash } from "sunar";
 
@@ -24,9 +24,9 @@ execute(slash, async (interaction) => {
 	if (cooldown > 0) return void CreateResponse.InteractionError(interaction, `Please wait **${new DurationFormatter().format(cooldown, 4, { right: ", " })}** before working another shift again.`);
 	else await Cooldown.SetCooldown(`work_${interaction.user.id}`, Time.Hour, interaction.user.id);
 
-	const work = await EconomyManager.Work(interaction, account);
-	const xp = await EconomyManager.ManageAccountXp(interaction, account);
-	if (account.Clan !== JoinableClan.None) await EconomyManager.ManageClanXp(account.Clan);
+	const work = await CurrencyManager.Work(interaction, account);
+	const xp = await CurrencyManager.ManageAccountXp(interaction, account);
+	if (account.Clan !== JoinableClan.None) await CurrencyManager.ManageClanXp(account.Clan);
 
 	await interaction.reply({ embeds: [Utility.CreateSimpleEmbed(`You worked long hours ${work.overtime !== 1 ? "with overtime " : ""}and earned ${EnvData("EMOJI_TOKEN")}** ${work.earned}**! Come back in 1 hour to work another shift!`)], ephemeral: false });
 	await Utility.Wait(300);

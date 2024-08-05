@@ -1,5 +1,5 @@
 /**
- * The data that is returned when EconomyManager#ManageClanXp() is executed
+ * The data that is returned when CurrencyManager#ManageClanXp() is executed
  */
 export interface ManageClanXpData {
 	/**
