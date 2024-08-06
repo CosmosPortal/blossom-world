@@ -1,6 +1,6 @@
 {
-	"name": "starlight-bank",
-	"description": "Cosmos Portal presents to you Starlight Bank, an economy Discord application for Starlight Café.",
+	"name": "blossom-world",
+	"description": "Cosmos Portal presents to you Blossom World, a currency Discord application for Starlight Café.",
 	"version": "0.1.0",
 	"author": "Cosmos Portal",
 	"license": "MIT",
@@ -23,12 +23,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/CosmosPortal/starlight-bank.git"
+		"url": "git+https://github.com/CosmosPortal/blossom-world.git"
 	},
 	"bugs": {
-		"url": "https://github.com/CosmosPortal/starlight-bank/issues"
+		"url": "https://github.com/CosmosPortal/blossom-world/issues"
 	},
-	"homepage": "https://github.com/CosmosPortal/starlight-bank#readme",
+	"homepage": "https://github.com/CosmosPortal/blossom-world#readme",
 	"devDependencies": {
 		"@swc/core": "^1.7.3",
 		"prettier": "^3.3.3",
@@ -40,13 +40,10 @@
 		"@sapphire/duration": "^1.1.2",
 		"@sapphire/fetch": "^3.0.2",
 		"@sapphire/stopwatch": "^1.5.2",
-		"@sapphire/utilities": "^3.17.0",
 		"discord.js": "^14.15.3",
 		"dotenv": "^16.4.5",
 		"sqlite3": "^5.1.7",
 		"sunar": "^0.5.0",
-		"typeorm": "^0.3.20",
-		"ulidx": "^2.3.0",
-		"weird-to-normal-chars": "^1.8.3"
+		"typeorm": "^0.3.20"
 	}
 }
