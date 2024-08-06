@@ -4,7 +4,7 @@ import { config, CooldownScope, execute, Slash } from "sunar";
 
 const slash = new Slash({
 	name: "register",
-	description: "Register an account on Starlight Bank"
+	description: "Register an account on Blossom World"
 });
 
 config(slash, { cooldown: { time: 3000, scope: CooldownScope.User } });
