@@ -33,8 +33,8 @@ execute(modal, async (interaction) => {
 	};
 
 	const actionRow = new ButtonBuilder()
-		.CreateRegularButton({ custom_id: `ViewBalanceCollect_${interaction.user.id}`, style: ButtonStyle.Secondary, disabled: TokenChest === 0, label: "Collect" })
-		.CreateRegularButton({ custom_id: `ViewBalanceStash_${interaction.user.id}`, style: ButtonStyle.Secondary, disabled: TokenChest >= TokenChestStorage || TokenBag === 0, label: "Stash" })
+		.CreateRegularButton({ customId: `ViewBalanceCollect_${interaction.user.id}`, style: ButtonStyle.Secondary, disabled: TokenChest === 0, label: "Collect" })
+		.CreateRegularButton({ customId: `ViewBalanceStash_${interaction.user.id}`, style: ButtonStyle.Secondary, disabled: TokenChest >= TokenChestStorage || TokenBag === 0, label: "Stash" })
 		.BuildActionRow();
 
 	return void (await interaction.update({ embeds: [embed], components: [actionRow] }));

@@ -1,5 +1,6 @@
+import { ProgressBar } from "@cosmosportal/utilities";
 import { JoinableClan } from "@lib/enums";
-import { Account, CreateResponse, EnvData, FindOneEntity, Leaderboard, ProgressBar, Sentry, Utility } from "@lib/utils";
+import { Account, CreateResponse, EnvData, FindOneEntity, Leaderboard, Sentry, Utility } from "@lib/utils";
 import { ApplicationCommandOptionType, type APIEmbed } from "discord.js";
 import { config, CooldownScope, execute, Slash } from "sunar";
 

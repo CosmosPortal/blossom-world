@@ -30,13 +30,13 @@
 	},
 	"homepage": "https://github.com/CosmosPortal/blossom-world#readme",
 	"devDependencies": {
-		"@swc/core": "^1.7.3",
+		"@swc/core": "^1.7.6",
 		"prettier": "^3.3.3",
-		"tsup": "^8.2.3",
+		"tsup": "^8.2.4",
 		"typescript": "^5.5.4"
 	},
 	"dependencies": {
-		"@cosmosportal/utilities": "^0.1.0",
+		"@cosmosportal/utilities": "^0.2.1",
 		"@sapphire/duration": "^1.1.2",
 		"@sapphire/fetch": "^3.0.2",
 		"@sapphire/stopwatch": "^1.5.2",

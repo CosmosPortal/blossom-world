@@ -39,7 +39,7 @@ execute(slash, async (interaction) => {
 	const xp = await CurrencyManager.ManageAccountXp(interaction, account);
 	if (account.Clan !== JoinableClan.None) await CurrencyManager.ManageClanXp(account.Clan);
 
-	const actionRow = new ButtonBuilder().CreateRegularButton({ custom_id: `EditBalanceCollectUserDrop_${amount}`, style: ButtonStyle.Secondary, label: "Collect" }).BuildActionRow();
+	const actionRow = new ButtonBuilder().CreateRegularButton({ customId: `EditBalanceCollectUserDrop_${amount}`, style: ButtonStyle.Secondary, label: "Collect" }).BuildActionRow();
 
 	await interaction.reply({ embeds: [Utility.CreateSimpleEmbed(`It looks like **@${interaction.user.tag}** dropped ${EnvData("EMOJI_TOKEN")} **${amount.toLocaleString()}** on the floor! Be the first to collect it!`)], components: [actionRow], ephemeral: false });
 	await Utility.Wait(300);

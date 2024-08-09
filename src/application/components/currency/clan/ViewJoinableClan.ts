@@ -28,16 +28,16 @@ execute(selectMenu, async (interaction) => {
 	const embed: APIEmbed = { author: { name: `The ${clanData[0].primaryName}┃Clan Leader • ${clanData[0].leader}` }, color: Utility.DefaultColor(), description: clanData[0].description };
 
 	const actionRowOne = new ButtonBuilder()
-		.CreateRegularButton({ custom_id: `EditAccountJoinClan_${interaction.user.id}_${clanData[0].name}`, style: ButtonStyle.Primary, label: `Join the ${clanData[0].primaryName}` })
-		.CreateRegularButton({ custom_id: `ViewInfoWhatIsAClan_${interaction.user.id}`, style: ButtonStyle.Secondary, label: "What is this?" })
-		.CreateRegularButton({ custom_id: `ExitClanJoin_${interaction.user.id}`, style: ButtonStyle.Danger, label: "Exit" })
+		.CreateRegularButton({ customId: `EditAccountJoinClan_${interaction.user.id}_${clanData[0].name}`, style: ButtonStyle.Primary, label: `Join the ${clanData[0].primaryName}` })
+		.CreateRegularButton({ customId: `ViewInfoWhatIsAClan_${interaction.user.id}`, style: ButtonStyle.Secondary, label: "What is this?" })
+		.CreateRegularButton({ customId: `ExitClanJoin_${interaction.user.id}`, style: ButtonStyle.Danger, label: "Exit" })
 		.BuildActionRow();
 
 	const options = ClanInformation.map((x) => {
 		return { label: `The ${x.primaryName}`, value: x.name, default: clanData[0].name === x.name };
 	});
 
-	const actionRowTwo = new StringSelectMenuBuilder({ custom_id: `ViewJoinableClan_${interaction.user.id}`, select_options: options, placeholder: "Select a clan" }).BuildActionRow();
+	const actionRowTwo = new StringSelectMenuBuilder({ customId: `ViewJoinableClan_${interaction.user.id}`, selectOptions: options, placeholder: "Select a clan" }).BuildActionRow();
 
 	return void (await interaction.update({ embeds: [embed], components: [actionRowOne, actionRowTwo] }));
 });

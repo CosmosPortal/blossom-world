@@ -18,12 +18,12 @@ execute(button, async (interaction) => {
 	const account = await FindOneEntity(Account, { Snowflake: interaction.user.id });
 	if (!account) return void (await CreateResponse.InteractionError(interaction, `It seems like you don't have an account! Use </register:${await ApplicationCommandInfo(interaction.client, "register", "id")}> to register an account!`));
 
-	const modal = new ModalBuilder({ custom_id: "EditBalanceCollect", title: "Chest Manager" })
+	const modal = new ModalBuilder({ customId: "EditBalanceCollect", title: "Chest Manager" })
 		.CreateTextInput({
-			custom_id: "amount",
+			customId: "amount",
 			label: "Enter the amount of tokens you are collecting",
 			style: TextInputStyle.Short,
-			max_length: String(account.TokenChest).length,
+			maxLength: String(account.TokenChest).length,
 			placeholder: `You can take out ${account.TokenChest.toLocaleString()}!`,
 			required: true,
 			value: String(account.TokenChest)

@@ -1,6 +1,6 @@
-import { ApplicationCommandInfo, StringSelectMenuBuilder } from "@cosmosportal/utilities";
+import { ApplicationCommandInfo, ProgressBar, StringSelectMenuBuilder } from "@cosmosportal/utilities";
 import { ClanInformation } from "@lib/constants";
-import { Account, Clans, CreateResponse, EnvData, FindOneEntity, FindOrCreateEntity, Leaderboard, ProgressBar, Sentry, Utility } from "@lib/utils";
+import { Account, Clans, CreateResponse, EnvData, FindOneEntity, FindOrCreateEntity, Leaderboard, Sentry, Utility } from "@lib/utils";
 import { ComponentType, type APIEmbed } from "discord.js";
 import { config, CooldownScope, execute, SelectMenu } from "sunar";
 import type { JoinableClan } from "@lib/enums";
@@ -43,7 +43,7 @@ execute(selectMenu, async (interaction) => {
 		return { label: `The ${x.primaryName}`, value: x.name, default: clanData[0].name === x.name };
 	});
 
-	const actionRow = new StringSelectMenuBuilder({ custom_id: `ViewClanInformation_${interaction.user.id}`, select_options: options, placeholder: "Select a clan" }).BuildActionRow();
+	const actionRow = new StringSelectMenuBuilder({ customId: `ViewClanInformation_${interaction.user.id}`, selectOptions: options, placeholder: "Select a clan" }).BuildActionRow();
 
 	return void (await interaction.update({ embeds: [embed], components: [actionRow] }));
 });

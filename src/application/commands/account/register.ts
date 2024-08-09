@@ -1,5 +1,5 @@
 import { ApplicationCommandInfo } from "@cosmosportal/utilities";
-import { Account, CreateEntity, CreateResponse, FindOneEntity, Sentry, Utility } from "@lib/utils";
+import { Account, CreateEntity, CreateResponse, FindOneEntity, Inventory, Sentry, Utility } from "@lib/utils";
 import { config, CooldownScope, execute, Slash } from "sunar";
 
 const slash = new Slash({
@@ -19,7 +19,8 @@ execute(slash, async (interaction) => {
 	const account = await FindOneEntity(Account, { Snowflake: interaction.user.id });
 	if (account) return void (await CreateResponse.InteractionError(interaction, `It seems like you already have an account! Use </profile:${await ApplicationCommandInfo(interaction.client, "profile", "id")}> to view your account!`));
 
-	const { CreationTimestamp } = await CreateEntity(Account, { Snowflake: interaction.user.id });
+	const inventory = await CreateEntity(Inventory, { Snowflake: interaction.user.id });
+	const { CreationTimestamp } = await CreateEntity(Account, { Snowflake: interaction.user.id, Inventory: inventory });
 
 	return void (await interaction.followUp({ embeds: [Utility.CreateSimpleEmbed(`Your account was successfully created on <t:${Math.trunc(Math.floor(CreationTimestamp.getTime() / 1000))}:D>!`)] }));
 });
