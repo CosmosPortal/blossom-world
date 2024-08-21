@@ -1,6 +1,6 @@
 import { Connect, Database } from "@lib/utils";
 import type { FindOneOptions, ObjectType } from "typeorm";
-import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
+import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
 
 /**
  * Updates an entity with the given data

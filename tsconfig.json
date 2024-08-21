@@ -11,14 +11,14 @@
 		"allowJs": true,
 		"target": "ESNext",
 		"moduleResolution": "Node",
-		"module": "Preserve",
+		"module": "ESNext",
 		"declaration": true,
-		"verbatimModuleSyntax": true,
 		"noImplicitOverride": true,
 		"isolatedModules": true,
 		"noEmit": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
+		"verbatimModuleSyntax": true,
 		"outDir": "dist",
 		"rootDir": "src",
 		"baseUrl": "./src",
@@ -32,6 +32,5 @@
 		},
 		"lib": ["ESNext"]
 	},
-	"include": ["src"],
-	"exclude": ["ignore", "node_modules", "note"]
+	"include": ["src"]
 }

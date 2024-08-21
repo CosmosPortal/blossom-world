@@ -1,5 +1,4 @@
 import { Color } from "@lib/enums";
-import { setTimeout } from "timers/promises";
 import type { APIEmbed } from "discord.js";
 
 /**
@@ -23,14 +22,5 @@ export class Utility {
 	 */
 	public static DefaultColor(): number {
 		return Color.Default;
-	}
-
-	/**
-	 * Delays the code
-	 * @param {number} delay - How long the delay should be in milliseconds
-	 * @returns {Promise<void>} Returns void when executed
-	 */
-	public static async Wait(delay: number): Promise<void> {
-		await setTimeout(delay);
 	}
 }

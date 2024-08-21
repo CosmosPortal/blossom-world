@@ -1,7 +1,9 @@
+import type { ClanInformationStructure } from "@lib/interfaces";
+
 /**
  * An array of data containing, names, description and more related to each clan
  */
-export const ClanInformation = [
+export const ClanInformation: ClanInformationStructure[] = [
 	{
 		id: "1",
 		name: "Anemo",

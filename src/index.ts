@@ -1,17 +1,19 @@
 import { Connect, EnvData } from "@lib/utils";
-import { GatewayIntentBits, Partials } from "discord.js";
-import { Client, dirname, load } from "sunar";
+import { Time } from "@sapphire/duration";
+import { ApplicationCommandRegistries, BucketScope, container, LogLevel, RegisterBehavior, SapphireClient } from "@sapphire/framework";
+import { GatewayIntentBits } from "discord.js";
 
-const client = new Client<true>({
-	intents: [GatewayIntentBits.GuildMessages, GatewayIntentBits.Guilds],
-	partials: [Partials.Channel, Partials.GuildMember, Partials.GuildScheduledEvent, Partials.Message, Partials.Reaction, Partials.ThreadMember, Partials.User],
-	allowedMentions: { parse: [], repliedUser: false }
+const client = new SapphireClient({
+	intents: [GatewayIntentBits.Guilds],
+	allowedMentions: { parse: [], repliedUser: false },
+	defaultCooldown: { delay: Time.Second * 3, scope: BucketScope.User },
+	logger: { level: LogLevel.Debug }
 });
 
 await Connect();
 
-console.log(`[Database Connected] | Client is connected to TypeORM`);
+container.logger.info(`[Database Connected] | Client is connected to TypeORM`);
 
-await load(`${dirname(import.meta.url)}/application/{commands,signals,components}/**/*.{js,ts}`);
+ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(RegisterBehavior.BulkOverwrite);
 
 await client.login(EnvData("CLIENT_TOKEN"));
